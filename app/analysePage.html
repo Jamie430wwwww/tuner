@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,user-scalable=no"
+    />
+    <title>Upload Audio/video</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 0;
+          padding: 20px;
+          background-color: #000; /* Set a background color for contrast */
+          color: white;
+      }
+      video {
+        width: 100%; /* Fixed width */
+        height: auto; /* Fixed height */
+        object-fit: cover; /* Maintain aspect ratio and cover the element */
+        border: 2px solid white; /* Optional: Add a border */
+      }
+      audio {
+          margin-top: 10px; /* Space between video and audio player */
+      }
+  </style>
+    
+  </head>
+  <body>
+    
+    <canvas class="frequency-bars"></canvas>
+    <div class="meter">
+      <div class="meter-dot"></div>
+      <div class="meter-pointer"></div>
+    </div>
+    <div class="notes">
+      <div class="notes-list"></div>
+      <div class="frequency">
+        <span>Hz</span>
+      </div>
+    </div>
+    <div class="a4"><div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+      </div>
+
+      <div id="main">
+      <button class="openbtn" onclick="openNav()">&#9776; </button>
+    </div>A<sub>4</sub> = <span>440</span> Hz</div>
+    
+
+    <nav style="background-color: #383838; height: 100%;top:2%;bottom:200px;" class="sidebarRight">
+      <button onclick="document.getElementById('video-input').click()">Insert Video Background Here</button>
+      <input type="file" accept="video/*" id="video-input"style="display:none"/>
+      <video controls id="video-tag"style=";padding: 10px;">
+        <source id="video-source" src="">
+          Your browser does not support the video tag.
+      </video>
+      <button onclick="document.getElementById('audio-input1').click()">Insert Song Here</button>
+      <input type="file" accept="audio/*" id="audio-input1"style="display:none"/>
+      <audio controls id="audio-tag1"style=";padding: 10px;">
+        <source id="audio-source" src="">
+            Your browser does not support the audio tag.
+      </audio>
+      <button onclick="document.getElementById('audio-input2').click()">Insert Seperated Guitar Track Here</button>
+      <input type="file" accept="audio/*" id="audio-input2"style="display:none"/>
+      <audio controls id="audio-tag2">
+        <source id="audio-source" src="">
+          Your browser does not support the audio tag.
+      </audio>
+      <input type="text" id="bpm" name="name" required minlength="4" maxlength="8" size="10" />
+      <button id="EnterBPM">Enter BPM</button>
+      <button id="start">Start Analysis</button>
+    </nav>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
+    <script src="audioAnalyse.js"></script>
+    <script src="meter.js"></script>
+    <script src="frequency-bars.js"></script>
+    <script src="notes.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
